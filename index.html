@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Salfit Electric Car Charging Stations</title>
+  <title>WorldWaternet/title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -85,8 +85,8 @@
 
     const electricCarsLayer = L.layerGroup().addTo(map);
 
-    $.getJSON("SalfitCity.json", function(SC) {
-      const goverLayer = L.geoJson(SC, {
+$.getJSON("GoverW.json", function(GW) {
+      const goverLayer = L.geoJson(GW, {
         style: function(feature) {
           return {
             fillColor: "",
@@ -98,15 +98,15 @@
         },
         onEachFeature: function(feature, layer) {
           layer.on('click', function(e) {
-            alert("Governorate: " + feature.properties.CommunityN);
+            alert("Governorate: " + feature.properties.Name);
           });
         }
       }).addTo(map);
 
       map.fitBounds(goverLayer.getBounds());
-    });
+    });;
 
-    $.getJSON("ElectricCar.json", function(EC) {
+    $.getJSON("LocationSalfit.json", function(LS) {
       L.geoJson(EC, {
         pointToLayer: function(feature, latlng) {
           var electricCarIcon = L.icon({
